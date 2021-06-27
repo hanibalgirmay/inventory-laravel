@@ -14,13 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::resource('items', App\Http\Controllers\ItemController::class);
-Route::resource('customers', App\Http\Controllers\UsersController::class);
-Route::resource('vendors', App\Http\Controllers\VendorController::class);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('items', App\Http\Controllers\ItemController::class);
+    Route::resource('customers', App\Http\Controllers\UsersController::class);
+    Route::resource('vendors', App\Http\Controllers\VendorController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('role', App\Http\Controllers\RoleController::class);
+});
+
 // Route::get('/vendor', [App\Http\Controllers\VendorController::class, 'index'])->name('vendor');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendors;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class VendorController extends Controller
@@ -50,7 +51,9 @@ class VendorController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = DB::table('vendors')->where('vendorID', $id)->first();
+        // $item = Vendors::find('vendorID', $id);
+        return view('vendors.show', compact('item'));
     }
 
     /**
@@ -61,7 +64,8 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = DB::table('vendors')->where('vendorID', $id)->first();
+        return view('vendors.edit', compact('item'));
     }
 
     /**
@@ -84,6 +88,8 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table("vendors")->where('vendorID', $id)->delete();
+        return redirect()->route('Vendors.index')
+            ->with('success', 'Vendor deleted successfully');
     }
 }

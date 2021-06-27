@@ -39,22 +39,22 @@
                                         <td>#</td>
                                         <td>Full Name</td>
                                         <td>Email</td>
-                                        <td>Address</td>
+                                        {{-- <td>Address</td>
                                         <td>Phone</td>
                                         <td>City</td>
-                                        <td>Status</td>
+                                        <td>Status</td> --}}
                                         <th>Action</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($customer as $item)
                                             <tr>
                                                 <th scope="row">{{$item->id}}</th>
-                                                <td colspan="1" class="table-active">{{$item->first_name}}</td>
+                                                <td colspan="1" class="table-active">{{$item->name}}</td>
                                                 <th scope="row">{{$item->email}}</th>
-                                                <th scope="row">{{$item->address}}</th>
+                                                {{-- <th scope="row">{{$item->address}}</th>
                                                 <th scope="row">{{$item->phone}}</th>
                                                 <th scope="row">{{$item->city}}</th>
-                                                <th scope="row">{{$item->status ? 'Active' : 'Disabled'}}</th>
+                                                <th scope="row">{{$item->status ? 'Active' : 'Disabled'}}</th> --}}
                                                 <td class="display">
                                                     <a class="btn btn-sm btn-success">Edit</a>
 
