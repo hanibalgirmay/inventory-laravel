@@ -1,0 +1,10 @@
+.w-5 {
+    width: 20px;
+    height: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
